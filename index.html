@@ -2,59 +2,25 @@
 <html lang="ZH-CN">
 <head>
   <meta charset="utf-8">
-  <title>web RTC 测试</title>
-  <style>
-    .booth {
-      width:400px;
-     
-      background:#ccc;
-      border: 10px solid #ddd;
-      margin: 0 auto;
-    }
-  </style>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
   <div class="booth">
-  	<input type="file" accept="image/*;capture=camera">
-   <!--  <video id="video" width="400" height="300"></video>
-    <button id='tack'> snap shot</button>
-    <canvas id='canvas' width='400' height='300'></canvas>
-    <img id='img' src=''> -->
+    <div class="header">
+      <div class="header-baclk"><</div>
+      <div class="header-con">追溯信息</div>
+      <div class="clear"></div>
+    </div>
+    <div class="content-icon">12121212</div>
+    <div class="content-list">
+      <div>追溯码：625353535353535355353</div>
+      <div><img src=""></div>
+    </div>
+    <div class="content-list">
+      <div>产品信息</div>
+      <div></div>
+    </div>
   </div>
- 
- 
-  <script>
-    // var video = document.getElementById('video'),
-    //     canvas = document.getElementById('canvas'),
-    //     snap = document.getElementById('tack'),
-    //     img = document.getElementById('img'),
-    //     vendorUrl = window.URL || window.webkitURL;
-        
-    // //媒体对象
-    // navigator.getMedia = navigator.getUserMedia ||
-    //                      navagator.webkitGetUserMedia ||
-    //                      navigator.mozGetUserMedia ||
-    //                      navigator.msGetUserMedia;
-    // navigator.getMedia({
-    //     video: true, //使用摄像头对象
-    //     audio: false  //不适用音频
-    // }, function(strem){
-    //     console.log(strem);
-    //     video.src = vendorUrl.createObjectURL(strem);
-    //     video.play();
-    // }, function(error) {
-    //     //error.code
-    //     console.log(error);
-    // });
-    // snap.addEventListener('click', function(){
-    
-    //     //绘制canvas图形
-    //     canvas.getContext('2d').drawImage(video, 0, 0, 400, 300);
-        
-    //     //把canvas图像转为img图片
-    //     img.src = canvas.toDataURL("image/png");
-        
-    // })
-  </script>
 </body>
 </html>

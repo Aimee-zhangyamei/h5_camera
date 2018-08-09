@@ -1,0 +1,33 @@
+*{
+    padding: 0.0rem;
+    margin: 0.0rem;
+}
+body,html{
+    background-color: #ececec;
+}
+.clear{
+    clear: both;
+}
+.header{
+    line-height: 0.533rem;
+    background-color: #fff;
+    border: 0.013rem solid #eee;
+}
+.header-baclk{
+    color: #222;
+    font-size: 0.187rem;
+    float: left;
+}
+.header-con{
+    color: #222;
+    font-size: 0.267rem;
+    float: left;
+}
+.content-icon{
+    background-color: #fff;
+}
+.content-list{
+    background:#fff;
+    padding: 0.427rem 0.267rem;
+    margin-top: 0.24rem;
+}
