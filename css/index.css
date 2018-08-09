@@ -1,33 +1,59 @@
 *{
-    padding: 0.0rem;
-    margin: 0.0rem;
-}
-body,html{
-    background-color: #ececec;
+    margin: 0px;
+    padding: 0px;
 }
 .clear{
     clear: both;
 }
+html,body{
+    background-color: #f1f1f1;
+    font-size: 50px;
+}
 .header{
-    line-height: 0.533rem;
+    line-height: 1.333rem;
     background-color: #fff;
-    border: 0.013rem solid #eee;
 }
 .header-baclk{
-    color: #222;
-    font-size: 0.187rem;
     float: left;
+    color: #222;
+    font-size: 0.427rem;
+    /*font-size: 0.16rem;*/
+    color: #222;
 }
 .header-con{
-    color: #222;
-    font-size: 0.267rem;
     float: left;
+    color: #222;
+    font-size: 0.427rem;
+    color: #222;
 }
 .content-icon{
+    height: 1.707rem;
+    margin-top: 0.24rem;
     background-color: #fff;
+    font-size: 0.427rem;
+    text-align: center;
 }
 .content-list{
-    background:#fff;
-    padding: 0.427rem 0.267rem;
+    padding: 0.427rem;
+    background-color: #fff;
     margin-top: 0.24rem;
+}
+.content-header{
+    font-size: 0.427rem;
+    color: #222;
+    line-height: 1.067rem;
+}
+.content-img img{
+    display: block;
+    width: 100%;
+    height: 4.533rem;
+}
+.header-bottom{
+    border-bottom: 1px solid #ececec;
+}
+.content-con-name{
+    color: #666;
+    font-size: 0.4rem;
+    line-height: 0.588rem;
+    margin-right: 0.32rem;
 }
