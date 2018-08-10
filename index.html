@@ -1,60 +1,126 @@
 <!DOCTYPE html>
-<html lang="ZH-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
-  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-  <meta content="yes" name="apple-mobile-web-app-capable" />
-  <meta content="yes" name="apple-touch-fullscreen" />
-  <meta content="telephone=no,email=no" name="format-detection" />
-  <meta content="maximum-dpr=2" name="flexible" />
-  <meta content="modeName=750-12" name="grid" />
-  <title></title>
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-</head>
-<body>
-  <div class="booth">
-    <div class="header">
-      <div class="header-baclk"><</div>
-      <div class="header-con">追溯信息</div>
-      <div class="clear"></div>
-    </div>
-    <div class="content-icon">12121212</div>
-    <div class="content-list">
-      <div class="content-header">追溯码：6253535353535</div>
-      <div class="content-img"><img src="images/img.jpg"></div>
-    </div>
-    <div class="content-list">
-      <div class="content-header header-bottom">产品信息</div>
-      <div class="content-con"><span class="content-con-name">产品名称</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">产品码</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">产地</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">水果种类</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">生产日期</span><span class="content-con-name">草莓</span></div>
-       <div class="content-con"><span class="content-con-name">生产批次</span><span class="content-con-name">草莓</span></div>
-    </div>
-    <div class="content-list">
-      <div class="content-header header-bottom">追溯信息</div>
-      <div class="content-con"><span class="content-con-name">入驻时间</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">入驻商家</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">商家地点</span><span class="content-con-name">草莓</span></div>
-     <div class="content-img-list">
-       <div class="content-img-c"><img src="images/img.jpg"></div>
-       <div class="content-img-c"><img src="images/img.jpg"></div>
-       <!-- <div class="clear"></div> -->
-     </div>
-    </div>
-    <div class="content-list">
-      <!-- <div class="content-header header-bottom">追溯信息</div> -->
-      <div class="content-con"><span class="content-con-name">生产时间</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">生产单位</span><span class="content-con-name">草莓</span></div>
-      <div class="content-con"><span class="content-con-name">水果产地</span><span class="content-con-name">草莓</span></div>
-     <div class="content-img-list">
-       <div class="content-img-c"><img src="images/img.jpg"></div>
-       <div class="content-img-c"><img src="images/img.jpg"></div>
-       <!-- <div class="clear"></div> -->
-     </div>
-    </div>
-  </div>
-</body>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>识别二维码</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			body{margin: 0;}
+			.module-content{
+				min-width: 320px;
+				max-width: 1000px;
+				width: 100%;
+				color: #000;
+				margin: 0 auto;
+				padding-left: 10px;
+				box-sizing: border-box;
+			}
+			.module-head{
+				text-align: center;
+				font-weight: 500;
+				margin: 0;
+				font-size: 30px;
+				height: 100px;
+				line-height: 100px;
+				color: #000;
+			}
+			.box h3{
+				font-weight: 300;
+				margin: 0;
+				font-size: 20px;
+				height: 60px;
+				line-height: 60px;
+				color: #000;
+			}
+			.url-box{
+				height: 30px;
+				line-height: 30px;
+				font-size: 14px;
+			}
+			#file{
+				position: absolute;
+				width: 120px;
+				height: 120px;
+				opacity: 0;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+				z-index: 10;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="module-content">
+			<!--解析二维码-->
+			<h1 class="module-head">解析二维码</h1>
+			<div class="box" id="analytic" style="position: relative;">
+				<h3>长按二维码解析</h3>
+				<img id="showImg" src="tyfo.png"/>
+				<p class="url-box" id="urlBox"></p>
+			</div>
+			<div class="box">
+				<h3>上传二维码解析</h3>
+				<div style="position: relative;">
+					<img style="width: 120px;height: 120px;" src="tu.png"/>
+					<input type="file" onchange="getUrl(this,'file-url')" name="" id="file" value="" />
+					<p class="url-box" id="urlBox"></p>
+				</div>
+			</div>
+		</div>
+		<script src="jquery-1.11.3.js"></script>
+		<script src="llqrcode.js" type="text/javascript" charset="utf-8"></script>
+		<script src="analyticCode.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//扩展移动端长按事件
+			$.fn.longPress = function (fn) {
+			　　let timer = null;
+			　　let $this = this;
+			　　for (let i = 0; i < $this.length; i++) {
+				
+				　　$this[i].addEventListener('touchstart', function (event) {
+				　　		timer = setTimeout(fn, 600);
+				　　}, false);
+				
+				　　$this[i].addEventListener('touchend', function (event) {
+				　　		clearTimeout(timer);
+				　　}, false);
+			　　}
+			}
+			//阻止触发默认事件
+			//window.ontouchstart = function (e) { e.preventDefault(); };
+			//仅对当前元素进行阻止触发默认事件
+			document.getElementById('showImg').ontouchstart = function (e) { e.preventDefault(); };
+			
+			function alertChange(param){
+				if(param === 1){
+					getUrl(document.getElementById('showImg'),'img-url');
+				}else if(param === 2){
+					analyticCode.getUrl('img-url',document.getElementById('showImg'),function(url){alert(url);});
+				}else if(param === 3){
+					analyticCode.getUrl('img-url',document.getElementById('showImg'),function(url){window.location.href = url;});
+				}else if(param === 4){
+					analyticCode.getUrl('img-url',document.getElementById('showImg'),function(url){window.open(url);});
+				}else{
+					return;
+				}
+				$('#addDiv').remove();
+			}
+			
+			$('#showImg').longPress(function(){
+				let str = '<div id="addDiv" style="position:absolute;top:110px;left:50px;z-index:10;background:#000;color:#fff;font-size:16px;text-align:center;width:180px;border-radius:5px;">'+
+				'<p style="border-bottom:1px solid #fff;margin:0;height:50px;line-height:50px;" onclick="alertChange(1)">识别二维码</p>'+
+				'<p style="border-bottom:1px solid #fff;margin:0;height:50px;line-height:50px;" onclick="alertChange(2)">弹出地址</p>'+
+				'<p style="border-bottom:1px solid #fff;margin:0;height:50px;line-height:50px;" onclick="alertChange(3)">当前窗口打开地址</p>'+
+				'<p onclick="alertChange(4)">新窗口打开地址</p>'+
+				'</div>';
+				$('#analytic').append(str);
+			});
+			function getUrl(e,param){
+				analyticCode.getUrl(param,e,function(url1,url2){
+					e.nextElementSibling.innerHTML = url1;
+					e.previousElementSibling.src = url2;
+				});
+			}
+		</script>
+	</body>
 </html>
