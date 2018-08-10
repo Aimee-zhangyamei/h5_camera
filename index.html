@@ -1,86 +1,35 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>QRCODE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>二维码扫描</title>
+    <link rel="stylesheet" type="text/css" href="lib/my.css">
 </head>
 
 <body>
-<!--<div id="outdiv"></div>-->
-<!--<video id="video" width="640" height="640" autoplay></video>-->
-<!--<button id="snap">Snap Photo</button>-->
-<!--<canvas id="canvas" width="640" height="640"></canvas>-->
-<canvas id="qr-canvas" width="800" height="600"></canvas>
-<video id="v" autoplay></video>
-<script type="text/javascript" src="llqrcode.js"></script>
-<!--<script type="text/javascript" src="vconsole.min.js"></script>-->
-<script type="text/javascript">
-   //是否成功调用getUserMedia标识
-   var gUM=false;
-   //画布getContext对象
-   var gCtx = null;
-   //视频展示对象
-   var v=document.getElementById("v");
-   var n=navigator;
-
-   var gCanvas = document.getElementById("qr-canvas");
-   gCtx = gCanvas.getContext("2d");
-   gCtx.clearRect(0, 0, 800, 600);
-   qrcode.callback = function(e){
-      //结果回调
-      alert(e)
-   }
-   //不同getUserMedia处理
-   if(n.getUserMedia)
-      n.getUserMedia({video: true, audio: false}, success, error);
-   else
-   if(n.mediaDevices.getUserMedia)
-      n.mediaDevices.getUserMedia({video: { facingMode: "environment"} , audio: false})
-            .then(success)
-            .catch(error);
-   else
-   if(n.webkitGetUserMedia)
-   {
-      webkit=true;
-      n.webkitGetUserMedia({video:true, audio: false}, success, error);
-   }
-   else
-   if(n.mozGetUserMedia)
-   {
-      moz=true;
-      n.mozGetUserMedia({video: true, audio: false}, success, error);
-   }
-   //getUserMedia调用成功
-   function success(stream) {
-      v.src = window.URL.createObjectURL(stream);
-      gUM=true;
-      setTimeout(captureToCanvas, 500);
-   }
-   //getUserMedia调用失败
-   function error(error) {
-      gUM=false;
-      return;
-   }
-
-   //将视频流放到画布
-   function captureToCanvas() {
-      if(gUM)
-      {
-         try{
-            gCtx.drawImage(v,0,0);
-            try{
-               qrcode.decode();
-            }
-            catch(e){
-               console.log(e);
-               setTimeout(captureToCanvas, 500);
-            };
-         }
-         catch(e){
-            console.log(e);
-            setTimeout(captureToCanvas, 500);
-         };
-      }
-   }
-</script>
+    <div>
+        <div class="qr-btn" node-type="qr-btn">扫描二维码1
+            <input node-type="jsbridge" type="file" name="myPhoto" value="扫描二维码1" />
+        </div>
+    </div>
+    <div>
+        <div class="qr-btn" node-type="qr-btn">扫描二维码2
+            <input node-type="jsbridge" type="file" name="myPhoto" value="扫描二维码2" />
+        </div>
+    </div>
+    <div class="result-qrcode">
+    </div>
+    <script src="lib/zepto.js"></script>
+    <script src="lib/qrcode.lib.min.js"></script>
+    <script src="lib/qrcode.js"></script>
+    <script>
+    //初始化扫描二维码按钮，传入自定义的 node-type 属性
+    $(function() {
+        Qrcode.init($('[node-type=qr-btn]'));
+    });
+    </script>
 </body>
 
 </html>
