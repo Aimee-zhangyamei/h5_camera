@@ -11,7 +11,7 @@
 <body>
     <div>
         <div class="qr-btn" node-type="qr-btn">扫描二维码1
-            <input node-type="jsbridge" type="file" name="myPhoto" value="扫描二维码1" />
+            <input node-type="jsbridge" type="file" name="myPhoto" value="扫描二维码1" onchange="imgChange" />
         </div>
     </div>
     <div>
@@ -22,13 +22,16 @@
     <div class="result-qrcode">
     </div>
     <script src="lib/zepto.js"></script>
-    <script src="lib/qrcode.lib.min.js"></script>
-    <script src="lib/qrcode.js"></script>
+    <!-- <script src="lib/qrcode.lib.min.js"></script> -->
+    <!-- <script src="lib/qrcode.js"></script> -->
     <script>
     //初始化扫描二维码按钮，传入自定义的 node-type 属性
-    $(function() {
-        Qrcode.init($('[node-type=qr-btn]'));
-    });
+    // $(function() {
+    //     Qrcode.init($('[node-type=qr-btn]'));
+    // });
+    function imgChange(){
+        alert('1111111111')
+    }
     </script>
 </body>
 
