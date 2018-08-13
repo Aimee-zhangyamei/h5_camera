@@ -2,37 +2,44 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>二维码扫描</title>
-    <link rel="stylesheet" type="text/css" href="lib/my.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>二维码扫描</title>
+  <link rel="stylesheet" type="text/css" href="lib/my.css">
 </head>
 
 <body>
-    <div>
-        <div class="qr-btn" node-type="qr-btn">扫描二维码1
-            <input type="file" name="myPhoto" value="扫描二维码1" onchange="imgChange" />
-        </div>
+  <div>
+    <div class="qr-btn" node-type="qr-btn">扫描二维码1
+      <input id="takePicture" type="file" name="myPhoto" value="扫描二维码1" />
     </div>
-    <div>
+  </div>
+    <!-- <div>
         <div class="qr-btn" node-type="qr-btn">扫描二维码2
             <input type="file" name="myPhoto" value="扫描二维码2" />
         </div>
-    </div>
-    <div class="result-qrcode">
-    </div>
-    <script src="lib/zepto.js"></script>
-    <!-- <script src="lib/qrcode.lib.min.js"></script> -->
-    <!-- <script src="lib/qrcode.js"></script> -->
-    <script>
+      </div> -->
+      <div class="result-qrcode">
+      </div>
+      <script src="lib/zepto.js"></script>
+      <!-- <script src="lib/qrcode.lib.min.js"></script> -->
+      <!-- <script src="lib/qrcode.js"></script> -->
+      <script>
     //初始化扫描二维码按钮，传入自定义的 node-type 属性
     // $(function() {
     //     Qrcode.init($('[node-type=qr-btn]'));
     // });
-    function imgChange(){
-        alert('1111111111')
-    }
-    </script>
+     // 监听照片拍摄,并获取照片流
+     var takePicture = document.getElementById('takePicture');
+     var takePictureUrl = function () {
+      takePicture.onchange = function (event) {
+        var files = event.target.files, file;
+        if (files && files.length > 0) {
+          file = files[0];
+          alert(file);
+        }
+      }
+    }();
+</script>
 </body>
-
 </html>
