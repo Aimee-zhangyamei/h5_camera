@@ -1,45 +1,107 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ZH-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>二维码扫描</title>
-  <link rel="stylesheet" type="text/css" href="lib/my.css">
-</head>
-
-<body>
-  <div>
-    <div class="qr-btn" node-type="qr-btn">扫描二维码1
-      <input id="takePicture" type="file" name="myPhoto" value="扫描二维码1" />
-    </div>
-  </div>
-    <!-- <div>
-        <div class="qr-btn" node-type="qr-btn">扫描二维码2
-            <input type="file" name="myPhoto" value="扫描二维码2" />
-        </div>
-      </div> -->
-      <div class="result-qrcode">
-      </div>
-      <script src="lib/zepto.js"></script>
-      <!-- <script src="lib/qrcode.lib.min.js"></script> -->
-      <!-- <script src="lib/qrcode.js"></script> -->
-      <script>
-    //初始化扫描二维码按钮，传入自定义的 node-type 属性
-    // $(function() {
-    //     Qrcode.init($('[node-type=qr-btn]'));
-    // });
-     // 监听照片拍摄,并获取照片流
-     var takePicture = document.getElementById('takePicture');
-     var takePictureUrl = function () {
-      takePicture.onchange = function (event) {
-        var files = event.target.files, file;
-        if (files && files.length > 0) {
-          file = files[0];
-          alert(file);
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta content="telephone=no,email=no" name="format-detection" />
+  <meta content="maximum-dpr=2" name="flexible" />
+  <meta content="modeName=750-12" name="grid" />
+  <title></title>
+  <style>
+.loading{
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin: 0 auto;
+            margin-top:100px;
         }
-      }
-    }();
-</script>
+        .loading span{
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00a8b7;
+            position: absolute;
+            -webkit-animation: load 1.04s ease infinite;
+        }
+        @-webkit-keyframes load{
+            0%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0.2;
+            }
+        }
+        .loading span:nth-child(1){
+            left: 0;
+            top: 50%;
+            margin-top:-4px;
+            -webkit-animation-delay:0.13s;
+        }
+        .loading span:nth-child(2){
+            left: 7px;
+            top: 7px;
+            -webkit-animation-delay:0.26s;
+        }
+        .loading span:nth-child(3){
+            left: 50%;
+            top: 0;
+            margin-left: -4px;
+            -webkit-animation-delay:0.39s;
+        }
+        .loading span:nth-child(4){
+            top: 7px;
+            right:7px;
+            -webkit-animation-delay:0.52s;
+        }
+        .loading span:nth-child(5){
+            right: 0;
+            top: 50%;
+            margin-top:-4px;
+            -webkit-animation-delay:0.65s;
+        }
+        .loading span:nth-child(6){
+            right: 7px;
+            bottom:7px;
+            -webkit-animation-delay:0.78s;
+        }
+        .loading span:nth-child(7){
+            bottom: 0;
+            left: 50%;
+            margin-left: -4px;
+            -webkit-animation-delay:0.91s;
+        }
+        .loading span:nth-child(8){
+            bottom: 7px;
+            left: 7px;
+            -webkit-animation-delay:1.04s;
+        }
+  </style>
+  <script>
+    function getUrlParam(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg); //匹配目标参数
+      if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+    let a = getUrlParam('code')
+    if (a) {
+      window.location.href='http://localhost/yunnan/h5_yunnan/traceInfo.html'
+    } 
+  </script>
+</head>
+<body>
+<div class="loading">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 </body>
 </html>
